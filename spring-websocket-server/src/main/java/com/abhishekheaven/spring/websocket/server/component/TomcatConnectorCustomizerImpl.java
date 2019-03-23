@@ -1,7 +1,6 @@
-package com.abhishekheaven.spring.websocket.server.configuration;
+package com.abhishekheaven.spring.websocket.server.component;
 
 import org.apache.catalina.connector.Connector;
-import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.apache.tomcat.util.net.SSLHostConfig;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.stereotype.Component;
