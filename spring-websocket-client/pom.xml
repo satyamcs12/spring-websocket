@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.abhishekheaven</groupId>
-    <artifactId>spring-websocket-server</artifactId>
+    <artifactId>spring-websocket-client</artifactId>
     <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <springboot.version>2.0.5.RELEASE</springboot.version>
+        <springboot.version>2.1.0.RELEASE</springboot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -40,13 +41,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${springboot.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -68,7 +62,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.abhishekheaven.spring.websocket.server.ServerApp</mainClass>
+                    <mainClass>com.abhishekheaven.spring.websocket.client.ClientApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -80,5 +74,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
+
 </project>
