@@ -21,10 +21,10 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
         System.out.println("New session established : " + session.getSessionId());
         session.subscribe("/topic/a", this);
         session.subscribe("/topic/b", this);
-        System.out.println("Subscribed to /topic/a");
+        System.out.println("Subscribed to /topic/a and /topic/b ");
         //session.subscribe("/queue/getini",this);
         session.subscribe("/user/queue/getini", this);
-        session.send("/app/hello","Hello Server..From Client" );
+        session.send("/app/hello","This is a request for initial configuration" );
         System.out.println("Message sent to websocket server");
     }
 
@@ -45,7 +45,6 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
         System.out.println("Handle Frame:");
         Greeting msg = (Greeting) payload;
         System.out.println("Received : " + msg.getContent());
-        //session.send("/app/hello", getSampleMessage());
     }
 
     @Override
