@@ -85,6 +85,7 @@ public class WebSocketListenerExtension extends WebSocketListener {
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+        System.out.println("Failed here: " + " " + t.getMessage());
         t.printStackTrace();
     }
 
