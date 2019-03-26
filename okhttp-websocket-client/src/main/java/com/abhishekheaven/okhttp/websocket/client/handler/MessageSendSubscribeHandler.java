@@ -44,4 +44,12 @@ public class MessageSendSubscribeHandler {
         message.put("destination", topic);
         webSocket.send(StompMessageSerializer.serialize(message));
     }
+
+    public void sendMessage(String topic,String content){
+        StompMessage message = new StompMessage("SEND");
+        message.put("destination", topic);
+        message.put("content-type","text/plain");
+        message.setContent(content);
+        webSocket.send(StompMessageSerializer.serialize(message));
+    }
 }

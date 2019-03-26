@@ -55,6 +55,8 @@ public class WebSocketListenerExtension extends WebSocketListener {
         messageSendSubscribeHandler = new MessageSendSubscribeHandler(webSocket);
         messageSendSubscribeHandler.sendConnectMessage(webSocket);
         messageSendSubscribeHandler.subscribe("/topic/a");
+        messageSendSubscribeHandler.subscribe("/user/queue/getini");
+        messageSendSubscribeHandler.sendMessage("/app/hello","This is request for initial configuration");
     }
 
     @Override
@@ -66,7 +68,6 @@ public class WebSocketListenerExtension extends WebSocketListener {
         System.out.println("command is .."+message.getCommand());
         System.out.println("Content is .."+message.getContent());
         System.out.println("header list is .."+message.getHeaders().keySet());
-
     }
 
     @Override
