@@ -1,5 +1,7 @@
 package com.abhishekheaven.okhttp.websocket.client.listener;
 
+import com.abhishekheaven.okhttp.websocket.client.Constants;
+import com.abhishekheaven.okhttp.websocket.client.WebSocketConnector;
 import com.abhishekheaven.okhttp.websocket.client.handler.CloseHandler;
 import com.abhishekheaven.okhttp.websocket.client.handler.MessageSendSubscribeHandler;
 import com.abhishekheaven.okhttp.websocket.client.handler.TopicHandler;
@@ -60,8 +62,39 @@ public class WebSocketListenerExtension extends WebSocketListener {
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+
+        webSocket.close(1000, null);
         System.out.println("Failed here: " + " " + t.getMessage());
-        t.printStackTrace();
+        //t.printStackTrace();
+        boolean isConnected = false;
+        //while(!isConnected){
+            try {
+                Thread.sleep(5000);
+                System.out.println("Waiting for 5 sec to reconnect");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            isConnected = reconnect();
+        //}
+    }
+
+    public boolean reconnect(){
+        WebSocketConnector connector = new WebSocketConnector();
+
+        String URL = System.getenv("url");
+        if (URL == null) {
+            System.out.println("Envt. variable for URL is not set");
+            URL = Constants.URL;
+        }
+        //URL = "wss://localhost:8081/hello/websocket";
+        System.out.println("URL is : " + URL);
+        try {
+            connector.connect(URL);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }
