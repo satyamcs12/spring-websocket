@@ -6,7 +6,7 @@ import okhttp3.WebSocketListener;
 public class OkHttpWebSocketClientApp {
     public static void main(String[] args) {
 
-        WebSocketListenerExtension client = new WebSocketListenerExtension();
+        WebSocketConnector connector = new WebSocketConnector();
 
         String URL = System.getenv("url");
         if (URL == null) {
@@ -18,7 +18,7 @@ public class OkHttpWebSocketClientApp {
         //URL = "wss://localhost:8081/hello/websocket";
         System.out.println("URL is : " + URL);
         try {
-            client.connect(URL);
+            connector.connect(URL);
         } catch (Exception e) {
             e.printStackTrace();
         }
