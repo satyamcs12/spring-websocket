@@ -36,6 +36,7 @@ public class WebSocketConnector {
         client.dispatcher().executorService().shutdown();
     }
 
+
     private SSLSocketFactory getSSLSocketFactory(SSLContext sslContext) {
         SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
         SNIHostName serverName = new SNIHostName(System.getenv("SNI_HOSTNAME"));

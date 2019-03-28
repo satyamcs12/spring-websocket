@@ -9,6 +9,7 @@ import java.util.Set;
 public class TopicHandler {
     private String topic;
     private Set<StompMessageListener> listeners = new HashSet<StompMessageListener>();
+
     public TopicHandler(String topic) {
         this.topic = topic;
     }
@@ -30,7 +31,7 @@ public class TopicHandler {
     }
 
     public void onMessage(Greeting greeting) {
-        for(StompMessageListener listener : listeners){
+        for (StompMessageListener listener : listeners) {
             listener.onMessage(greeting);
         }
     }

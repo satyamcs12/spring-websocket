@@ -4,9 +4,7 @@ import com.abhishekheaven.okhttp.websocket.client.Constants;
 import com.abhishekheaven.okhttp.websocket.client.WebSocketConnector;
 import com.abhishekheaven.okhttp.websocket.client.handler.CloseHandler;
 import com.abhishekheaven.okhttp.websocket.client.handler.MessageSendSubscribeHandler;
-import com.abhishekheaven.okhttp.websocket.client.handler.TopicHandler;
 import com.abhishekheaven.okhttp.websocket.client.model.StompMessage;
-import com.abhishekheaven.okhttp.websocket.client.ssl.SSLSocketFactoryWrapper;
 import com.abhishekheaven.okhttp.websocket.client.utils.StompMessageSerializer;
 import okhttp3.*;
 import okio.ByteString;
@@ -19,7 +17,6 @@ public class WebSocketListenerExtension extends WebSocketListener {
 
     X509TrustManager trustManager;
 
-    private Map<String, TopicHandler> topics = new HashMap<String, TopicHandler>();
     private CloseHandler closeHandler;
     private WebSocket webSocket;
 
