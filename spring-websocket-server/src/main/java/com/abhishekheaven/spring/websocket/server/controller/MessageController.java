@@ -1,6 +1,8 @@
 package com.abhishekheaven.spring.websocket.server.controller;
 
 import com.abhishekheaven.spring.websocket.server.model.Greeting;
+import com.abhishekheaven.spring.websocket.server.model.Message;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -32,8 +34,11 @@ public class MessageController {
     @SendToUser("/queue/getini")
     public Greeting send(String message) throws Exception {
 
-        System.out.println(message);
-        String str = message;
+        System.out.println("json message is: "+message);
+
+        ObjectMapper mapper = new ObjectMapper();
+        Message message1 = mapper.readValue(message,Message.class);
+        String str = message1.getName();
         Thread.sleep(1000); // simulated delay
         return new Greeting("Acknowledgement received for initial configuration..");
     }

@@ -6,6 +6,7 @@ import com.abhishekheaven.okhttp.websocket.client.handler.CloseHandler;
 import com.abhishekheaven.okhttp.websocket.client.handler.MessageSendSubscribeHandler;
 import com.abhishekheaven.okhttp.websocket.client.model.StompMessage;
 import com.abhishekheaven.okhttp.websocket.client.utils.StompMessageSerializer;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import okhttp3.*;
 import okio.ByteString;
 
@@ -30,7 +31,11 @@ public class WebSocketListenerExtension extends WebSocketListener {
         messageSendSubscribeHandler.sendConnectMessage(webSocket);
         messageSendSubscribeHandler.subscribe("/topic/a");
         messageSendSubscribeHandler.subscribe("/user/queue/getini");
-        messageSendSubscribeHandler.sendMessage("/app/hello","This is request for initial configuration");
+        try {
+            messageSendSubscribeHandler.sendMessage("/app/hello","This is request for initial configuration");
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.abhishekheaven.okhttp.websocket.client.handler;
 
+import com.abhishekheaven.okhttp.websocket.client.model.Message;
 import com.abhishekheaven.okhttp.websocket.client.model.StompMessage;
 import com.abhishekheaven.okhttp.websocket.client.utils.StompMessageSerializer;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.WebSocket;
 
 import java.util.HashMap;
@@ -45,11 +48,14 @@ public class MessageSendSubscribeHandler {
         webSocket.send(StompMessageSerializer.serialize(message));
     }
 
-    public void sendMessage(String topic,String content){
+    public void sendMessage(String topic,String content) throws JsonProcessingException {
         StompMessage message = new StompMessage("SEND");
         message.put("destination", topic);
         message.put("content-type","text/plain");
-        message.setContent(content);
+        ObjectMapper objectMapper = new ObjectMapper();
+        Message message1 = new Message(content);
+        String jsonInString = objectMapper.writeValueAsString(message1);
+        message.setContent(jsonInString);
         webSocket.send(StompMessageSerializer.serialize(message));
     }
 }
