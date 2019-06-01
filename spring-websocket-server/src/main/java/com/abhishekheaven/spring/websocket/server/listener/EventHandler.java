@@ -9,6 +9,8 @@ import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+import java.time.LocalDateTime;
+
 @Component
 public class EventHandler {
 
@@ -29,6 +31,7 @@ public class EventHandler {
     public void onSessionConnectedEvent(SessionConnectedEvent sessionConnectedEvent){
 
         System.out.println("Session Connected: ");
+        System.out.println("Connected time: "+ LocalDateTime.now());
         //System.out.println(sessionConnectedEvent.getMessage());
         Message<byte[]> message = sessionConnectedEvent.getMessage();
         StompHeaderAccessor headers = StompHeaderAccessor.wrap(message);
@@ -38,6 +41,7 @@ public class EventHandler {
     @EventListener
     public void onSessionDisConnectedEvent(SessionDisconnectEvent sessionDisconnectEvent){
         System.out.println("Session Disconnected");
+        System.out.println("Disconnected time: "+LocalDateTime.now());
         Message<byte[]> message = sessionDisconnectEvent.getMessage();
         StompHeaderAccessor headers = StompHeaderAccessor.wrap(message);
         System.out.println("session id: "+headers.getSessionId());

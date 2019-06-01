@@ -27,7 +27,7 @@ public class MessageSendSubscribeHandler {
     public void sendConnectMessage(WebSocket webSocket) {
         StompMessage message = new StompMessage("CONNECT");
         message.put("accept-version", "1.1");
-        //message.put("heart-beat", "10000,10000");
+        message.put("heart-beat", "10000,15000");
         webSocket.send(StompMessageSerializer.serialize(message));
         System.out.println("Connect message sent...");
     }

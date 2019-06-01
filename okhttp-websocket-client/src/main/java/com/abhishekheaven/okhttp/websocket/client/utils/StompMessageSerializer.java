@@ -2,6 +2,7 @@ package com.abhishekheaven.okhttp.websocket.client.utils;
 
 import com.abhishekheaven.okhttp.websocket.client.model.StompMessage;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class StompMessageSerializer {
@@ -24,7 +25,9 @@ public class StompMessageSerializer {
     public static StompMessage deserialize(String message) {
         String[] lines = message.split("\n");
 
+        System.out.println("line size is : "+lines.length);
         String command = lines[0].trim();
+
 
         StompMessage result = new StompMessage(command);
 

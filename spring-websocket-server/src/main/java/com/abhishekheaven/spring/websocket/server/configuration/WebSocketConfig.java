@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         te.initialize();
         String[] str = new String[]{"/topic/a","/topic/b","/queue/getini"};
         //config.enableSimpleBroker(str);
-        config.enableSimpleBroker(str).setHeartbeatValue(new long[]{10000,10000}).setTaskScheduler(te);
+        config.enableSimpleBroker(str).setHeartbeatValue(new long[]{10000,15000}).setTaskScheduler(te);
         config.setApplicationDestinationPrefixes("/app");
     }
 

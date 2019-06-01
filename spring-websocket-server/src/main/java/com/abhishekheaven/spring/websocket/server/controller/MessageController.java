@@ -42,4 +42,9 @@ public class MessageController {
         Thread.sleep(1000); // simulated delay
         return new Greeting("Acknowledgement received for initial configuration..");
     }
+
+    @MessageMapping("/heartbeat")
+    public void getHeartbeat(String message) throws Exception {
+        System.out.println("Received heartbeat message: "+message);
+    }
 }

@@ -19,19 +19,21 @@ public class WebSocketConnector {
 
     public void connect(String url) throws Exception{
 
-        SSLContext sslContext = getSSLContext();
-        SSLSocketFactory sslSocketFactory = getSSLSocketFactory(sslContext);
-        OkHttpClient client = new OkHttpClient.Builder()
+        //SSLContext sslContext = getSSLContext();
+        //SSLSocketFactory sslSocketFactory = getSSLSocketFactory(sslContext);
+        /*OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(0, TimeUnit.MILLISECONDS).sslSocketFactory(sslSocketFactory, trustManager)
+                .build();*/
+        //without SSL
+        OkHttpClient client = new OkHttpClient.Builder()
+                .readTimeout(0, TimeUnit.MILLISECONDS)
                 .build();
-
 
         Request request = new Request.Builder()
                 .url(url)
                 .build();
         WebSocketListenerExtension webSocketListenerExtension = new WebSocketListenerExtension();
         client.newWebSocket(request, webSocketListenerExtension);
-
         // Trigger shutdown of the dispatcher's executor so this process can exit cleanly.
         client.dispatcher().executorService().shutdown();
     }
