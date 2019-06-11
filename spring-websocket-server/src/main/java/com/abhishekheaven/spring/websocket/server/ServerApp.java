@@ -10,5 +10,6 @@ public class ServerApp {
         SpringApplication app = new SpringApplication(ServerApp.class);
         System.out.println("Starting Spring Application...");
         app.run(args);
+        System.out.println("commit 2");
     }
 }
