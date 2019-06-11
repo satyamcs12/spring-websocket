@@ -12,5 +12,7 @@ public class ServerApp {
         System.out.println("Commit1");
         app.run(args);
         System.out.println("commit 2");
+        System.out.println("commit 3");
+        
     }
 }
